@@ -1,0 +1,17 @@
+Raffle.deployed().then(function(instance) { app = instance })
+app.rafflecreator(1).then(function(c) { rafflecreator = c;})
+rafflecreator
+
+app.rafflecreator(1).then(function(c) { raffleCreatorID = Number(c[0]);})
+raffleCreatorID
+
+app.rafflecreator(1).then(function(c) { publicKey = (c[1]);})
+publicKey
+
+app.rafflecreator(1).then(function(c) { privateKey = (c[2]);})
+privateKey
+
+app.tickets(1).then(function(c) { ticket = c;})
+ticket
+
+
