@@ -1,4 +1,7 @@
+//Creando instancia del Smart Contract.
 Raffle.deployed().then(function(instance) { app = instance })
+
+//Viendo la información del creador de la rifa.
 app.rafflecreator(1).then(function(c) { rafflecreator = c;})
 rafflecreator
 
@@ -11,7 +14,52 @@ publicKey
 app.rafflecreator(1).then(function(c) { privateKey = (c[2]);})
 privateKey
 
+//Viendo los tickets creados por default.
+app.ticketsCount().then(function(c){ ticketsCount = Number(c);})
+ticketsCount
+//Los siguientes comandos pueden ser reemplazados el 1 por un 2 porque son dos tickets.
 app.tickets(1).then(function(c) { ticket = c;})
 ticket
+app.tickets(1).then(function(c) { id = Number(c[0]);})
+id
+app.tickets(1).then(function(c) { ticketNumber = Number(c[1]);})
+ticketNumber
+app.tickets(1).then(function(c) { ticketTaken = (c[2]);})
+ticketTaken
+
+//Comprando el primer ticket.
+
+app.buyTicket('0x04214c172ac99f5e8b21D5Abf324816C4Df6F893');
+
+//Viendo cuantos participantes hay ahora en la rifa.
+app.competitorsCount().then(function(c){ competitorsCount = Number(c);})
+competitorsCount
+
+//Viendo la información del participante.
+app.competitors(1).then(function(c) { competitor = c;})
+competitor
+app.competitors(1).then(function(c) { id = Number(c[0]);})
+id
+app.competitors(1).then(function(c) { publicKey = (c[1]);})
+publicKey
+app.competitors(1).then(function(c) { ticketNumber = Number(c[2]);})
+ticketNumber
+
+//Comprando un ticket más.
+
+app.competitors(2).then(function(c) { publicKey = (c[1]);})
+publicKey
+app.buyTicket('0x04214c172ac99f5e8b21D5Abf324816C4Df6F893');
+app.competitorsCount().then(function(c){ competitorsCount = Number(c);})
+competitorsCount
+app.competitors(2).then(function(c) { publicKey = (c[1]);})
+publicKey
+
+
+
+
+
+
+
 
 
