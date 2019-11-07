@@ -19,7 +19,7 @@ contract Raffle {
     }
     uint public competitorsCount;
     uint public ticketsCount;
-    uint winnerCompetitor;
+    uint public winnerCompetitor;
     //address creatorPrivateKey = 415735b1fd4ca68e3f6d9cd36844fb61d560364a4c1f0d2ded23867165fba1ce;
     mapping(uint => raffleCreator) public rafflecreator;
     mapping(uint => Competitor) public competitors;
@@ -65,5 +65,26 @@ contract Raffle {
                 }
             }
         }
+    }
+
+    function selectWinner (
+    string memory _privateKey) public {
+        string memory privateKeyCreator = rafflecreator[1].privateKey;
+        if (compareStrings(_privateKey,privateKeyCreator)){
+            uint randomIndex = random();
+            Competitor storage winnerPivotCompetitor = competitors[randomIndex];
+            winnerCompetitor = winnerPivotCompetitor.id;
+            //ticketsCount++;
+            //tickets[ticketsCount] = Ticket(ticketsCount, ticketsCount, false);
+        }
+    }
+
+     function random() public view returns (uint8) {
+        //return uint8(uint256(keccak256(block.timestamp, block.difficulty))%251);
+        //return uint8(uint256(keccak256(abi.encodePacked(block.timestamp, block.difficulty)))%251);
+        //return uint8(uint256(keccak256(abi.encodePacked(block.difficulty)))%251);
+        return uint8(uint256(keccak256(abi.encodePacked(block.difficulty)))%competitorsCount);
+
+
     }
 }

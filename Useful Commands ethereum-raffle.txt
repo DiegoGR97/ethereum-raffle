@@ -45,7 +45,7 @@ publicKey
 app.competitors(1).then(function(c) { ticketNumber = Number(c[2]);})
 ticketNumber
 
-//Comprando un ticket más.
+//Comprando un ticket más y luego consultando el nuevo participante y el nuevo número de participantes.
 
 app.competitors(2).then(function(c) { publicKey = (c[1]);})
 publicKey
@@ -54,6 +54,23 @@ app.competitorsCount().then(function(c){ competitorsCount = Number(c);})
 competitorsCount
 app.competitors(2).then(function(c) { publicKey = (c[1]);})
 publicKey
+
+
+//Verificar el numero aleatorio escogido.
+app.random().then(function(c){ randomNumber = Number(c);})
+randomNumber
+
+//Código con la llave privada del creador de la rifa para asignar resultados de la rifa.
+
+app.selectWinner('415735b1fd4ca68e3f6d9cd36844fb61d560364a4c1f0d2ded23867165fba1ce').then(function(c){})
+
+//Verificando que el id de competidor del ganador se quede guardado en winnerCompetitor.
+app.winnerCompetitor().then(function(c){ winnerCompetitor = Number(c);})
+winnerCompetitor
+
+
+
+
 
 
 
